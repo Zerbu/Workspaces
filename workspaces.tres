@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="WorkspaceSettings" format=3 uid="uid://cou1lhgftm56j"]
+
+[ext_resource type="Script" uid="uid://dtj3clcifgqai" path="res://addons/workspaces/workspace_settings.gd" id="1_08lb0"]
+[ext_resource type="Script" uid="uid://butjkqetv7sac" path="res://addons/workspaces/workspace.gd" id="2_jn25a"]
+
+[sub_resource type="Resource" id="Resource_odcxn"]
+script = ExtResource("2_jn25a")
+workspace_name = "Default"
+layout_name = "Default"
+
+[sub_resource type="Resource" id="Resource_m0b18"]
+script = ExtResource("2_jn25a")
+workspace_name = "Scripting"
+layout_name = "Scripting"
+filesystem_auto_navigate = "res://workspaces.tres"
+auto_set_file_on_unapply = true
+auto_set_main_screen = "Script"
+hide_main_screen_buttons = true
+hide_tabs_right_1_top = true
+hide_tabs_right_1_bottom = true
+hide_tabs_right_2_top = true
+hide_tabs_right_2_bottom = true
+hide_scene_tabs = true
+
+[sub_resource type="Resource" id="Resource_08lb0"]
+script = ExtResource("2_jn25a")
+workspace_name = "Test"
+layout_name = "Test"
+hide_main_screen_buttons = true
+hide_entire_middle_area = true
+file_filter_names = null
+file_filter_extensions = null
+
+[resource]
+script = ExtResource("1_08lb0")
+workspaces = Array[ExtResource("2_jn25a")]([SubResource("Resource_odcxn"), SubResource("Resource_m0b18"), SubResource("Resource_08lb0")])
+metadata/_custom_type_script = "uid://dtj3clcifgqai"

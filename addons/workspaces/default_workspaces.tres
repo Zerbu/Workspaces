@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WorkspaceSettings" format=3 uid="uid://cjar617lymkil"]
+
+[ext_resource type="Script" uid="uid://dtj3clcifgqai" path="res://addons/workspaces/workspace_settings.gd" id="1_lscho"]
+[ext_resource type="Script" uid="uid://butjkqetv7sac" path="res://addons/workspaces/workspace.gd" id="2_pram6"]
+
+[sub_resource type="Resource" id="Resource_h6d1k"]
+script = ExtResource("2_pram6")
+workspace_name = "Default"
+layout_name = "Default"
+
+[resource]
+script = ExtResource("1_lscho")
+workspaces = Array[ExtResource("2_pram6")]([SubResource("Resource_h6d1k")])
+metadata/_custom_type_script = "uid://dtj3clcifgqai"

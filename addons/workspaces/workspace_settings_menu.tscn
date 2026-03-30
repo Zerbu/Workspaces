@@ -1,0 +1,310 @@
+[gd_scene format=3 uid="uid://c7btmdc20m3kj"]
+
+[ext_resource type="Script" uid="uid://bnxfna5yvteaa" path="res://addons/workspaces/workspace_settings_menu.gd" id="1_a8b4a"]
+
+[node name="WorkspaceSettingsMenu" type="Control" unique_id=1954548020]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_a8b4a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=929062004]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer" unique_id=427280288]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Main Settings" type="VBoxContainer" parent="VBoxContainer/TabContainer" unique_id=503152292]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Main Settings" unique_id=1795390158]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer" unique_id=1030895089]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer" unique_id=502732658]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1956368049]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=13867923]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Workspace Name"
+
+[node name="WorkspaceName" type="LineEdit" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1386900969]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer" unique_id=111884523]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=596414266]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Layout"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=853045704]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=2087025510]
+layout_mode = 2
+text = "Enter the exact name of a saved layout and the editor will automatically apply it when switching to this workspace
+Layouts can be saved or deleted from Editor > Editor Layout"
+autowrap_mode = 2
+
+[node name="LayoutName" type="LineEdit" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=195852474]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer" unique_id=728899139]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=283608640]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "FileSystem Auto Navigate"
+
+[node name="FileSystemAutoNavigate" type="LineEdit" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1693134389]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BrowseButton" type="Button" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=72184050]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse"
+
+[node name="AutoSetFileOnUnapply" type="CheckBox" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer" unique_id=556800318]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Auto set \"FileSystem Auto Navigate\" to the current file when exiting the workspace"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1535973706]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2124674212]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Auto Set Main Screen"
+
+[node name="AutoSetMainScreenOptionButton" type="OptionButton" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=639575113]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 6
+popup/item_0/id = 5
+popup/item_1/text = "2D"
+popup/item_1/id = 0
+popup/item_2/text = "3D"
+popup/item_2/id = 1
+popup/item_3/text = "Script"
+popup/item_3/id = 2
+popup/item_4/text = "Game"
+popup/item_4/id = 3
+popup/item_5/text = "AssetLib"
+popup/item_5/id = 4
+
+[node name="AutoSetMainScreenLineEdit" type="LineEdit" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1025671344]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hide Editor Features" type="VBoxContainer" parent="VBoxContainer/TabContainer" unique_id=233943776]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Hide Editor Features" unique_id=385489200]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer" unique_id=785471433]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer" unique_id=84061106]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HideMenuBar" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer" unique_id=68442633]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hide Menu Bar"
+
+[node name="HideMainScreenButtons" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer" unique_id=442434026]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hide Main Screen Buttons"
+
+[node name="HideRunBar" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer" unique_id=992103801]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hide Run Bar"
+
+[node name="HideBottomBar" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer" unique_id=138474773]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hide Bottom Bar"
+
+[node name="HideEntireMiddleArea" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer" unique_id=860044667]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hide Entire Middle Area"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1169543831]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=50677982]
+layout_mode = 2
+text = "Hide Tabs:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=193982278]
+layout_mode = 2
+
+[node name="TopLeftDock1" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1005799983]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Top Left Dock 1"
+
+[node name="BottomLeftDock1" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1978867608]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bottom Left Dock 1"
+
+[node name="TopLeftDock2" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=357486611]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Top Left Dock 2"
+
+[node name="BottomLeftDock2" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=908909429]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bottom Left Dock 2"
+
+[node name="SceneTabs" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=2005864414]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Scene Tabs"
+
+[node name="TopRightDock1" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1626990288]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Top Right Dock 1"
+
+[node name="BottomRightDock1" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=930287892]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bottom Right Dock 1"
+
+[node name="TopRightDock2" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=682141477]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Top Right Dock 2"
+
+[node name="BottomRightDock2" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1590291823]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bottom Right Dock 2"
+
+[node name="File Filters (Experimental)" type="VBoxContainer" parent="VBoxContainer/TabContainer" unique_id=1564000386]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/File Filters (Experimental)" unique_id=1073684863]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TabContainer/File Filters (Experimental)/ScrollContainer" unique_id=171039281]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/File Filters (Experimental)/ScrollContainer/MarginContainer" unique_id=1733997753]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/File Filters (Experimental)/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1101729729]
+layout_mode = 2
+text = "Here, you can restrict which files show up in the FileSystem dock.
+WARNING: This feature is very hacky. Use at your own risk!"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TabContainer/File Filters (Experimental)/ScrollContainer/MarginContainer/VBoxContainer" unique_id=278049752]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/File Filters (Experimental)/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1480071091]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+text = "Allowed Extensions
+Seperated by line breaks"
+
+[node name="FileFilterExtensions" type="TextEdit" parent="VBoxContainer/TabContainer/File Filters (Experimental)/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=194515649]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Examples:
+.gd
+.tscn
+.png"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/File Filters (Experimental)/ScrollContainer/MarginContainer/VBoxContainer" unique_id=128186014]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/File Filters (Experimental)/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=578201705]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+text = "Allowed Names (mainly for folders)
+Seperated by line breaks"
+
+[node name="FileFilterNames" type="TextEdit" parent="VBoxContainer/TabContainer/File Filters (Experimental)/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=432531405]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Examples:
+scripts
+textures
+characters"
+
+[node name="CloseButton" type="Button" parent="VBoxContainer" unique_id=1045136571]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Save and Close"
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=582107594]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+file_mode = 0
+
+[connection signal="pressed" from="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/BrowseButton" to="." method="_on_browse_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4/AutoSetMainScreenOptionButton" to="." method="_on_auto_set_main_screen_option_button_item_selected"]
+[connection signal="text_changed" from="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4/AutoSetMainScreenLineEdit" to="." method="_on_auto_set_main_screen_line_edit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

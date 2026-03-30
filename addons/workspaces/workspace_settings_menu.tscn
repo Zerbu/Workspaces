@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c7btmdc20m3kj"]
 
 [ext_resource type="Script" uid="uid://bnxfna5yvteaa" path="res://addons/workspaces/workspace_settings_menu.gd" id="1_a8b4a"]
+[ext_resource type="PackedScene" uid="uid://0gbqpj6womys" path="res://addons/workspaces/workspace_selector.tscn" id="2_wbnjk"]
 
 [node name="WorkspaceSettingsMenu" type="Control" unique_id=1954548020]
 layout_mode = 3
@@ -25,9 +26,10 @@ theme_override_constants/separation = 0
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer" unique_id=427280288]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 3
 
 [node name="Main Settings" type="VBoxContainer" parent="VBoxContainer/TabContainer" unique_id=503152292]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -186,50 +188,60 @@ text = "Hide Tabs:"
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=193982278]
 layout_mode = 2
 
-[node name="TopLeftDock1" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1005799983]
+[node name="LeftDocks1Top" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1005799983]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Top Left Dock 1"
+text = "Left Docks 1 Top"
 
-[node name="BottomLeftDock1" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1978867608]
+[node name="LeftDocks1Bottom" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1978867608]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Bottom Left Dock 1"
+text = "Left Docks 1 Bottom"
 
-[node name="TopLeftDock2" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=357486611]
+[node name="LeftDocks2Top" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=357486611]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Top Left Dock 2"
+text = "Left Docks 2 Top"
 
-[node name="BottomLeftDock2" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=908909429]
+[node name="LeftDocks2Bottom" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=908909429]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Bottom Left Dock 2"
+text = "Left Docks 2 Bottom"
 
 [node name="SceneTabs" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=2005864414]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Scene Tabs"
 
-[node name="TopRightDock1" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1626990288]
+[node name="RightDocks1Top" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1626990288]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Top Right Dock 1"
+text = "Right Docks 1 Top"
 
-[node name="BottomRightDock1" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=930287892]
+[node name="RightDocks1Bottom" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=930287892]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Bottom Right Dock 1"
+text = "Right Docks 1 Bottom"
 
-[node name="TopRightDock2" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=682141477]
+[node name="RightDocks2Top" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=682141477]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Top Right Dock 2"
+text = "Right Docks 2 Top"
 
-[node name="BottomRightDock2" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1590291823]
+[node name="RightDocks2Bottom" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1590291823]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Bottom Right Dock 2"
+text = "Right Docks 2 Bottom"
+
+[node name="BottomDocksLeft" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=766248144]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bottom Docks Left (Godot 4.7+)"
+
+[node name="BottomDocksRight" type="CheckBox" parent="VBoxContainer/TabContainer/Hide Editor Features/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=352896987]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bottom Docks Right (Godot 4.7+)"
 
 [node name="File Filters (Experimental)" type="VBoxContainer" parent="VBoxContainer/TabContainer" unique_id=1564000386]
 visible = false
@@ -291,9 +303,80 @@ scripts
 textures
 characters"
 
+[node name="Auto Switch" type="VBoxContainer" parent="VBoxContainer/TabContainer" unique_id=238158556]
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Auto Switch" unique_id=1472215506]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer" unique_id=1330711362]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer" unique_id=2046692561]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1024067625]
+layout_mode = 2
+text = "The workspace will automatically switch to another one when accessing certain parts of the editor."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer" unique_id=514739173]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1368745505]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "2D"
+horizontal_alignment = 2
+
+[node name="AutoSwitchOn2D" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1832528264 instance=ExtResource("2_wbnjk")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1952265176]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1577376837]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "3D"
+horizontal_alignment = 2
+
+[node name="AutoSwitchOn3D" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1905492105 instance=ExtResource("2_wbnjk")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1662895857]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=308643714]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Script"
+horizontal_alignment = 2
+
+[node name="AutoSwitchOnScript" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=332938232 instance=ExtResource("2_wbnjk")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer" unique_id=156399062]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1510594972]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Game"
+horizontal_alignment = 2
+
+[node name="AutoSwitchOnGame" parent="VBoxContainer/TabContainer/Auto Switch/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=940496267 instance=ExtResource("2_wbnjk")]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="CloseButton" type="Button" parent="VBoxContainer" unique_id=1045136571]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Save and Close"
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=582107594]

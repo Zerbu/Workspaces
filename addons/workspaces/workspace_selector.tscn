@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://0gbqpj6womys"]
+
+[ext_resource type="Script" uid="uid://dye0g18l7yiyp" path="res://addons/workspaces/workspace_selector.gd" id="1_46nfs"]
+
+[node name="WorkspaceSelector" type="MarginContainer" unique_id=1832528264]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_46nfs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1119763078]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer" unique_id=1533842297]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer" unique_id=1361031061]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]

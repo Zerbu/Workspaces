@@ -55,6 +55,8 @@ func _on_workspace_list_item_selected(index: int) -> void:
 func _on_active_workspace_changed(index: int, workspace: Workspace, previous_index: int, previous_workspace: Workspace):
 	if previous_workspace: previous_workspace.unapply()
 	if workspace == null: return
+	if workspace_list.item_count <= index:
+		return
 	workspace_list.select(index)
 	workspace.apply()
 	ResourceSaver.save(Workspaces.settings)
@@ -77,7 +79,7 @@ func _on_menu_button_id_pressed(id: int) -> void:
 			Workspaces.settings.active_workspace_index = workspace_list.item_count-1
 			_open_workplace_settings()
 		5:
-			Workspaces.unhide_controls()
+			Workspace.unhide_controls()
 		6:
 			var array = Workspaces.settings.workspaces
 

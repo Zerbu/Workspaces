@@ -47,6 +47,16 @@ extends Resource
 @export var file_filter_names			:	String
 @export var file_filter_extensions		:	String
 
+# Auto-Switch
+@export var auto_switch_on_script		:	String
+@export var auto_switch_on_2d			:	String
+@export var auto_switch_on_3d			:	String
+@export var auto_switch_on_game			:	String
+
+# Godot 4.7+
+@export var hide_tabs_bottom_left		: 	bool
+@export var hide_tabs_bottom_right		: 	bool
+
 func apply():
 	if layout_name:
 		var layout = GrapplerPopupMenuUtils.get_id_from_text(GrapplerTitleBar.editor_layouts_menu, layout_name)
@@ -61,22 +71,51 @@ func apply():
 
 	if hide_menu_bar and hide_main_screen_buttons and hide_run_bar: GrapplerTitleBar.title_bar.hide()
 	
-	if hide_bottom_bar			:	GrapplerDocks.bottom_panel.tabs_visible							= false
-	if hide_tabs_left_1_top		:	GrapplerDocks.left_dock_1_top_tab_container.tabs_visible		= false
-	if hide_tabs_left_1_bottom	:	GrapplerDocks.left_dock_1_bottom_tab_container.tabs_visible 	= false
-	if hide_tabs_left_2_top		:	GrapplerDocks.left_dock_2_top_tab_container.tabs_visible		= false
-	if hide_tabs_left_2_bottom	:	GrapplerDocks.left_dock_2_bottom_tab_container.tabs_visible		= false
-	if hide_scene_tabs			:	GrapplerDocks.main_dock_scene_tabs.hide()
-	if hide_tabs_right_1_top	:	GrapplerDocks.right_dock_1_top_tab_container.tabs_visible		= false
-	if hide_tabs_right_1_bottom	:	GrapplerDocks.right_dock_1_bottom_tab_container.tabs_visible	= false
-	if hide_tabs_right_2_top	:	GrapplerDocks.right_dock_2_top_tab_container.tabs_visible		= false
-	if hide_tabs_right_2_bottom	:	GrapplerDocks.right_dock_2_bottom_tab_container.tabs_visible	= false
-	if hide_entire_middle_area	:	GrapplerDocks.middle_vbox.hide()
+	if hide_bottom_bar				:	GrapplerDocks.bottom_panel.tabs_visible							= false
+	if hide_tabs_left_1_top			:	GrapplerDocks.left_dock_1_top_tab_container.tabs_visible		= false
+	if hide_tabs_left_1_bottom		:	GrapplerDocks.left_dock_1_bottom_tab_container.tabs_visible 	= false
+	if hide_tabs_left_2_top			:	GrapplerDocks.left_dock_2_top_tab_container.tabs_visible		= false
+	if hide_tabs_left_2_bottom		:	GrapplerDocks.left_dock_2_bottom_tab_container.tabs_visible		= false
+	if hide_scene_tabs				:	GrapplerDocks.main_dock_scene_tabs.hide()
+	if hide_tabs_right_1_top		:	GrapplerDocks.right_dock_1_top_tab_container.tabs_visible		= false
+	if hide_tabs_right_1_bottom		:	GrapplerDocks.right_dock_1_bottom_tab_container.tabs_visible	= false
+	if hide_tabs_right_2_top		:	GrapplerDocks.right_dock_2_top_tab_container.tabs_visible		= false
+	if hide_tabs_right_2_bottom		:	GrapplerDocks.right_dock_2_bottom_tab_container.tabs_visible	= false
+	if hide_entire_middle_area		:	GrapplerDocks.middle_vbox.hide()
+	
+	# Godot 4.7+
+	if GrapplerDocks.has_bottom_docks:
+		if hide_tabs_bottom_left	:	GrapplerDocks.bottom_dock_left_tab_container.tabs_visible 		= false
+		if hide_tabs_bottom_right	:	GrapplerDocks.bottom_dock_right_tab_container.tabs_visible 		= false
 
 	if filesystem_auto_navigate:
 		# The frame delay is to ensure auto navigate takes priority over Layout changes when setting the scrollbar position 
 		await Engine.get_main_loop().process_frame
 		GrapplerFileSystem.filesystem_dock.navigate_to_path(filesystem_auto_navigate)
+
+static func unhide_controls():
+	GrapplerTitleBar	.menu_bar				.show()
+	GrapplerTitleBar	.main_screen_buttons	.show()
+	GrapplerTitleBar	.run_bar				.show()
+	GrapplerTitleBar	.title_bar				.show()
+	GrapplerDocks		.main_dock_scene_tabs	.show()
+	GrapplerDocks		.middle_vbox			.show()
+	
+	GrapplerDocks.bottom_panel.tabs_visible							= true
+	GrapplerDocks.left_dock_1_top_tab_container.tabs_visible		= true
+	GrapplerDocks.left_dock_1_bottom_tab_container.tabs_visible		= true
+	GrapplerDocks.left_dock_2_top_tab_container.tabs_visible		= true
+	GrapplerDocks.left_dock_2_bottom_tab_container.tabs_visible		= true
+	GrapplerDocks.right_dock_1_top_tab_container.tabs_visible		= true
+	GrapplerDocks.right_dock_1_bottom_tab_container.tabs_visible	= true
+	GrapplerDocks.right_dock_2_top_tab_container.tabs_visible		= true
+	GrapplerDocks.right_dock_2_bottom_tab_container.tabs_visible	= true
+	
+	# Godot 4.7+
+	if GrapplerDocks.has_bottom_docks:
+		GrapplerDocks.bottom_dock_left_tab_container.tabs_visible 	= true
+		GrapplerDocks.bottom_dock_right_tab_container.tabs_visible 	= true
+	
 
 func apply_filter():
 	if file_filter_names:
@@ -100,11 +139,21 @@ func apply_filter():
 			return false
 		)
 
+func push_auto_switch():
+	if auto_switch_on_2d and GrapplerDocks.node_2d_and_ui_editor:
+		Workspaces.settings.set_workspace_by_name(auto_switch_on_2d)
+	if auto_switch_on_3d and GrapplerDocks.node_3d_editor:
+		Workspaces.settings.set_workspace_by_name(auto_switch_on_3d)
+	if auto_switch_on_script and GrapplerDocks.script_editor.is_visible_in_tree():
+		Workspaces.settings.set_workspace_by_name(auto_switch_on_script)
+	if auto_switch_on_game and GrapplerDocks.game_view:
+		Workspaces.settings.set_workspace_by_name(auto_switch_on_game)
+
 func reapply():
 	unapply()
 	apply()
 
 func unapply():
-	Workspaces.unhide_controls()
+	Workspace.unhide_controls()
 	if auto_set_file_on_unapply:
 		filesystem_auto_navigate = EditorInterface.get_current_path()

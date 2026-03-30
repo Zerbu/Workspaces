@@ -22,33 +22,36 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 @tool
-class_name WorkspaceSettings
-extends Resource
+extends MarginContainer
 
-@export var active_workspace_index: int:
-	set(value):
-		var previous_index = active_workspace_index
-		var previous_workspace = get_active_workspace()
-		active_workspace_index = value
-		active_workspace_changed.emit(active_workspace_index, get_active_workspace(), previous_index, previous_workspace)
+var is_refreshing	: bool
 
-@export var workspaces: Array[Workspace]
+@export	var value: String:
+	set(new_value):
+		value = new_value
+		_refresh.call_deferred()
+		
+@onready	var option_button	: OptionButton 	= %OptionButton
+@onready	var line_edit		: LineEdit 		= %LineEdit
 
-signal active_workspace_changed(index: int, workspace: Workspace)
+func _ready() -> void:
+	option_button.add_item("")
+	for workspace in Workspaces.settings.workspaces:
+		option_button.add_item(workspace.workspace_name)
 
-func get_active_workspace() -> Workspace:
-	if active_workspace_index >= workspaces.size():
-		return null
-	return workspaces[active_workspace_index]
+func _on_line_edit_text_changed(new_text: String) -> void:
+	if is_refreshing: return
+	value = new_text
 
-func get_workspace_by_name(name: String) -> Workspace:
-	for workspace in workspaces:
-		if workspace.workspace_name == name:
-			return workspace
-	return null
+func _on_option_button_item_selected(index: int) -> void:
+	if is_refreshing: return
+	value = option_button.get_item_text(index)
 
-func set_workspace_by_name(name: String):
-	var workspace = get_workspace_by_name(name)
-	if not workspace:
-		return
-	active_workspace_index = workspaces.find(workspace)
+func _refresh():
+	is_refreshing = true
+	line_edit.text = value
+	for i in range(option_button.item_count-1):
+		var text = option_button.get_item_text(i)
+		if text == line_edit.text:
+			option_button.select(i)
+	is_refreshing = false

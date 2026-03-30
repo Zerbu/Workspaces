@@ -23,7 +23,7 @@ GrapplerTitleBar="*uid://crg6t23l1gswf"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/__grappler/plugin.cfg", "res://addons/workspaces/plugin.cfg")
+enabled=PackedStringArray("res://addons/workspaces/plugin.cfg")
 
 [physics]
 

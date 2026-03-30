@@ -27,6 +27,8 @@ extends Resource
 
 @export var active_workspace_index: int:
 	set(value):
+		if value == active_workspace_index:
+			return
 		var previous_index = active_workspace_index
 		var previous_workspace = get_active_workspace()
 		active_workspace_index = value

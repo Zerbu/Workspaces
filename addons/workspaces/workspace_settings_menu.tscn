@@ -26,10 +26,9 @@ theme_override_constants/separation = 0
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer" unique_id=427280288]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 3
+current_tab = 0
 
 [node name="Main Settings" type="VBoxContainer" parent="VBoxContainer/TabContainer" unique_id=503152292]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -304,6 +303,7 @@ textures
 characters"
 
 [node name="Auto Switch" type="VBoxContainer" parent="VBoxContainer/TabContainer" unique_id=238158556]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 

@@ -64,7 +64,7 @@ func _exit_tree() -> void:
 func _process(delta: float) -> void:
 	var workspace = Workspaces.settings.get_active_workspace()
 	if not workspace: return
-	workspace.push_auto_switch()
+	workspace._on_process()
 
 func _on_change_timer_timeout():
 	var workspace = Workspaces.settings.get_active_workspace()

@@ -54,3 +54,4 @@ func set_workspace_by_name(name: String):
 	if not workspace:
 		return
 	active_workspace_index = workspaces.find(workspace)
+	

@@ -81,6 +81,13 @@ autowrap_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="ForceSaveLayout" type="CheckBox" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1160167981]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Automatically save the layout when exiting the workspace
+(WARNING: This is hacky and will cause the \"Save Layout\" dialog to flash on the screen)"
+autowrap_mode = 2
+
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/TabContainer/Main Settings/ScrollContainer/MarginContainer/VBoxContainer" unique_id=728899139]
 layout_mode = 2
 

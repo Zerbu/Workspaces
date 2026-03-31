@@ -43,6 +43,8 @@ func _enter_tree() -> void:
 	GrapplerBase.root_vbox.add_child	(workspaces_bar)
 	GrapplerBase.root_vbox.move_child	(workspaces_bar, 0)
 	
+	settings.active_workspace_changed.connect(_on_active_workspace_changed)
+	
 	if not change_timer:
 		change_timer = Timer.new()
 	change_timer.wait_time = 1.0
@@ -52,6 +54,9 @@ func _enter_tree() -> void:
 
 func _exit_tree() -> void:
 	GrapplerBase.root_vbox.remove_child	(workspaces_bar)
+	
+	settings.active_workspace_changed.disconnect(_on_active_workspace_changed)
+	
 	change_timer.timeout.disconnect		(_on_change_timer_timeout)
 	change_timer.stop()
 	change_timer.queue_free()
@@ -65,3 +70,12 @@ func _on_change_timer_timeout():
 	var workspace = Workspaces.settings.get_active_workspace()
 	if not workspace: return
 	workspace.apply_filter()
+
+func _on_active_workspace_changed(index: int, workspace: Workspace, previous_index: int, previous_workspace: Workspace):
+	if previous_workspace: previous_workspace.unapply()
+	if workspace == null: return
+	if workspaces_bar.workspace_list.item_count <= index:
+		return
+	workspaces_bar.workspace_list.select(index)
+	workspace.apply()
+	ResourceSaver.save(Workspaces.settings)

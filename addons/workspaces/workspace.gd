@@ -30,6 +30,7 @@ extends Resource
 @export var filesystem_auto_navigate	: 	String
 @export var auto_set_file_on_unapply	:	bool
 @export var auto_set_main_screen		: 	String
+@export var force_save_layout			: 	bool
 @export var hide_menu_bar				: 	bool
 @export var hide_main_screen_buttons	: 	bool
 @export var hide_run_bar				: 	bool
@@ -64,7 +65,7 @@ func apply():
 			GrapplerPopupMenuUtils.simulate_id_pressed(GrapplerTitleBar.editor_layouts_menu, layout)
 
 	if auto_set_main_screen		:	GrapplerTitleBar.set_main_screen_from_string(auto_set_main_screen)
-			
+	
 	if hide_menu_bar			:	GrapplerTitleBar.menu_bar.hide()
 	if hide_main_screen_buttons	: 	GrapplerTitleBar.main_screen_buttons.hide()
 	if hide_run_bar				: 	GrapplerTitleBar.run_bar.hide()
@@ -155,5 +156,7 @@ func reapply():
 
 func unapply():
 	Workspace.unhide_controls()
+	if force_save_layout:
+		GrapplerLayoutsDialog.force_save_layout(layout_name)
 	if auto_set_file_on_unapply:
 		filesystem_auto_navigate = EditorInterface.get_current_path()

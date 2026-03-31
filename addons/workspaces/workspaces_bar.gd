@@ -33,7 +33,6 @@ var _is_refreshing: bool
 
 func _ready() -> void:
 	_refresh()
-	Workspaces.settings.active_workspace_changed.connect(_on_active_workspace_changed)
 	menu_button.get_popup().id_pressed.connect(_on_menu_button_id_pressed)
 	var workspace = Workspaces.settings.get_active_workspace()
 	if workspace: workspace.apply()
@@ -51,15 +50,6 @@ func _refresh():
 func _on_workspace_list_item_selected(index: int) -> void:
 	if _is_refreshing: return
 	Workspaces.settings.active_workspace_index = index
-
-func _on_active_workspace_changed(index: int, workspace: Workspace, previous_index: int, previous_workspace: Workspace):
-	if previous_workspace: previous_workspace.unapply()
-	if workspace == null: return
-	if workspace_list.item_count <= index:
-		return
-	workspace_list.select(index)
-	workspace.apply()
-	ResourceSaver.save(Workspaces.settings)
 
 func _on_menu_button_id_pressed(id: int) -> void:
 	match id:

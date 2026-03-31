@@ -33,6 +33,7 @@ extends Control
 @onready var auto_set_file_on_unapply				: CheckBox			= %AutoSetFileOnUnapply
 @onready var auto_set_main_screen_option_button		: OptionButton		= %AutoSetMainScreenOptionButton
 @onready var auto_set_main_screen_line_edit			: LineEdit			= %AutoSetMainScreenLineEdit
+@onready var force_save_layout						: CheckBox 			= %ForceSaveLayout
 
 @onready var hide_menu_bar							: CheckBox			= %HideMenuBar
 @onready var hide_main_screen_buttons				: CheckBox			= %HideMainScreenButtons
@@ -77,6 +78,8 @@ func _ready() -> void:
 	auto_set_file_on_unapply.button_pressed		= workspace.auto_set_file_on_unapply
 	auto_set_main_screen_line_edit.text			= workspace.auto_set_main_screen
 
+	force_save_layout.button_pressed			= workspace.force_save_layout
+
 	hide_menu_bar.button_pressed				= workspace.hide_menu_bar
 	hide_main_screen_buttons.button_pressed		= workspace.hide_main_screen_buttons
 	hide_run_bar.button_pressed					= workspace.hide_run_bar
@@ -115,6 +118,8 @@ func _on_close_button_pressed() -> void:
 	workspace.filesystem_auto_navigate			= file_system_auto_navigate.text
 	workspace.auto_set_file_on_unapply			= auto_set_file_on_unapply.button_pressed
 	workspace.auto_set_main_screen				= auto_set_main_screen_line_edit.text
+
+	workspace.force_save_layout					= force_save_layout.button_pressed
 
 	workspace.hide_menu_bar						= hide_menu_bar.button_pressed
 	workspace.hide_main_screen_buttons			= hide_main_screen_buttons.button_pressed

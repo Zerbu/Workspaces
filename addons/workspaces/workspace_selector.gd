@@ -35,6 +35,8 @@ var is_refreshing	: bool
 @onready	var line_edit		: LineEdit 		= %LineEdit
 
 func _ready() -> void:
+	if not get_owner(): return
+	option_button.clear()
 	option_button.add_item("")
 	for workspace in Workspaces.settings.workspaces:
 		option_button.add_item(workspace.workspace_name)

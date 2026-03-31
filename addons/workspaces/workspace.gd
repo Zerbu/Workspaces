@@ -100,6 +100,7 @@ func apply():
 	if auto_select_script:
 		var script_editor = EditorInterface.get_script_editor()
 		script_editor.editor_script_changed.connect(_on_script_editor_script_changed)
+		_on_script_editor_script_changed(script_editor.get_current_script())
 
 	if filesystem_auto_navigate:
 		# The frame delay is to ensure auto navigate takes priority over Layout changes when setting the scrollbar position 

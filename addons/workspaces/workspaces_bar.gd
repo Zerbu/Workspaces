@@ -71,38 +71,43 @@ func _on_menu_button_id_pressed(id: int) -> void:
 		5:
 			Workspace.unhide_controls()
 		6:
-			var array = Workspaces.settings.workspaces
-
-			if array.is_empty():
-				return
-
-			var old_index = clamp(Workspaces.settings.active_workspace_index, 0, array.size() - 1)
-			var new_index = old_index - 1
-
-			if new_index < 0:
-				var item = array.pop_at(old_index)
-				array.append(item)
-				Workspaces.settings.active_workspace_index = array.size() - 1
-			else:
-				var temp = array[old_index]
-				array[old_index] = array[new_index]
-				array[new_index] = temp
-				Workspaces.settings.active_workspace_index = new_index
-
-			_refresh()
+			_move_workspace(-1)
 		7:
-			var old_index = Workspaces.settings.active_workspace_index
-			var array = Workspaces.settings.workspaces
+			_move_workspace(0)
 
-			var new_index = (old_index + 1) % array.size()
+func _move_workspace(direction: int) -> void:
+	var workspace_index = Workspaces.settings.active_workspace_index
+	
+	var workspace = Workspaces.settings.get_active_workspace()
+	if workspace:
+		workspace.unapply()
+	
+	var array = Workspaces.settings.workspaces
 
+	if array.is_empty():
+		return
+
+	var old_index = clamp(workspace_index, 0, array.size() - 1)
+	var new_index = old_index + direction
+
+	if direction < 0:
+		if new_index < 0:
+			var item = array.pop_at(old_index)
+			array.append(item)
+			new_index = array.size() - 1
+		else:
 			var temp = array[old_index]
 			array[old_index] = array[new_index]
 			array[new_index] = temp
+	else:
+		# moving right
+		new_index = new_index % array.size()
+		var temp = array[old_index]
+		array[old_index] = array[new_index]
+		array[new_index] = temp
 
-			Workspaces.settings.active_workspace_index = new_index
-
-			_refresh()
+	Workspaces.settings.active_workspace_index = new_index
+	_refresh()
 
 func _open_workplace_settings():
 	var workspace = Workspaces.settings.get_active_workspace()

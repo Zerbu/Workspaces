@@ -162,9 +162,6 @@ func reapply():
 	apply()
 
 func unapply():
-	if Workspaces.settings.get_active_workspace() != self:
-		return
-	
 	Workspace.unhide_controls()
 	
 	if force_save_layout:
@@ -172,9 +169,9 @@ func unapply():
 
 	if auto_set_file_on_unapply:
 		filesystem_auto_navigate = EditorInterface.get_current_path()
-	
+
 	if auto_select_script:
-		var script_editor = EditorInterface.get_script_editor()
+		var script_editor: ScriptEditor = EditorInterface.get_script_editor()
 		script_editor.editor_script_changed.disconnect(_on_script_editor_script_changed)
 
 func _unlock_docks(node: Node):

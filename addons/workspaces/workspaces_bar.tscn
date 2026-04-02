@@ -18,13 +18,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 16
 auto_height = true
-item_count = 5
+item_count = 7
 max_columns = 0
 item_0/text = "Default"
-item_1/text = "Scripts"
+item_1/text = "UI"
 item_2/text = "Shaders"
-item_3/text = "Editor Debugger"
-item_4/text = "UI"
+item_3/text = "Signals"
+item_4/text = "Scripts"
+item_5/text = "File Explorer"
+item_6/text = "Editor Debugger"
 
 [node name="MenuButton" type="MenuButton" parent="HBoxContainer" unique_id=397744270]
 unique_name_in_owner = true

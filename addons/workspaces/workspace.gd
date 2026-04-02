@@ -26,7 +26,11 @@ class_name Workspace
 extends Resource
 
 # Main Settings
-@export var workspace_name				: 	String
+@export var workspace_name : String:
+	set(value):
+		workspace_name = value
+		resource_name = value
+
 @export var layout_name					: 	String
 @export var filesystem_auto_navigate	: 	String
 @export var auto_set_file_on_unapply	:	bool
@@ -78,7 +82,7 @@ func apply():
 
 	if hide_menu_bar and hide_main_screen_buttons and hide_run_bar: GrapplerTitleBar.title_bar.hide()
 	
-	if hide_bottom_bar				:	GrapplerDocks.bottom_panel.tabs_visible							= false
+	if hide_bottom_bar				:	GrapplerDocks.bottom_panel.hide()
 	if hide_tabs_left_1_top			:	GrapplerDocks.left_dock_1_top_tab_container.tabs_visible		= false
 	if hide_tabs_left_1_bottom		:	GrapplerDocks.left_dock_1_bottom_tab_container.tabs_visible 	= false
 	if hide_tabs_left_2_top			:	GrapplerDocks.left_dock_2_top_tab_container.tabs_visible		= false
@@ -115,7 +119,7 @@ static func unhide_controls():
 	GrapplerDocks		.main_dock_scene_tabs	.show()
 	GrapplerDocks		.middle_vbox			.show()
 	
-	GrapplerDocks.bottom_panel.tabs_visible							= true
+	GrapplerDocks.bottom_panel.show()
 	GrapplerDocks.left_dock_1_top_tab_container.tabs_visible		= true
 	GrapplerDocks.left_dock_1_bottom_tab_container.tabs_visible		= true
 	GrapplerDocks.left_dock_2_top_tab_container.tabs_visible		= true
@@ -158,6 +162,9 @@ func reapply():
 	apply()
 
 func unapply():
+	if Workspaces.settings.get_active_workspace() != self:
+		return
+	
 	Workspace.unhide_controls()
 	
 	if force_save_layout:

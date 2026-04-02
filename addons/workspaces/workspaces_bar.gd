@@ -73,7 +73,7 @@ func _on_menu_button_id_pressed(id: int) -> void:
 		6:
 			_move_workspace(-1)
 		7:
-			_move_workspace(0)
+			_move_workspace(1)
 
 func _move_workspace(direction: int) -> void:
 	var workspace_index = Workspaces.settings.active_workspace_index

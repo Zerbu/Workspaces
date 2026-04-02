@@ -79,6 +79,8 @@ func _on_active_workspace_changed(index: int, workspace: Workspace, previous_ind
 	if workspace == null: return
 	if workspaces_bar.workspace_list.item_count <= index:
 		return
+	if index == -1:
+		return
 	workspaces_bar.workspace_list.select(index)
 	workspace.apply()
 	ResourceSaver.save(Workspaces.settings)

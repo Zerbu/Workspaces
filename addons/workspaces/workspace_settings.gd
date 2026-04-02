@@ -41,6 +41,8 @@ extends Resource
 signal active_workspace_changed(index: int, workspace: Workspace)
 
 func get_active_workspace() -> Workspace:
+	if active_workspace_index < 0:
+		return null
 	if active_workspace_index >= workspaces.size():
 		return null
 	return workspaces[active_workspace_index]
@@ -50,6 +52,10 @@ func get_workspace_by_name(name: String) -> Workspace:
 		if workspace.workspace_name == name:
 			return workspace
 	return null
+
+func move_workspace(workspace: Workspace, new_index: int):
+	workspaces.erase(workspace)
+	workspaces.insert(new_index, workspace)
 
 func set_workspace_by_name(name: String):
 	var workspace = get_workspace_by_name(name)

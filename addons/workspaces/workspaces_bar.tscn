@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvv1m6dv5twkq"]
 
 [ext_resource type="Script" uid="uid://b7l1a0jiug38d" path="res://addons/workspaces/workspaces_bar.gd" id="1_lox26"]
+[ext_resource type="Script" uid="uid://bdwn8rc8huci6" path="res://addons/workspaces/workspace_list.gd" id="2_5gg6x"]
 
 [node name="WorkspacesBar" type="MarginContainer" unique_id=673892310]
 anchors_preset = 10
@@ -18,15 +19,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 16
 auto_height = true
-item_count = 7
+item_count = 8
 max_columns = 0
-item_0/text = "Default"
-item_1/text = "UI"
-item_2/text = "Shaders"
-item_3/text = "Signals"
-item_4/text = "Scripts"
-item_5/text = "File Explorer"
-item_6/text = "Editor Debugger"
+item_0/text = "UI: Controls"
+item_1/text = "Shaders"
+item_2/text = "Scripts"
+item_3/text = "File Explorer"
+item_4/text = "Signals"
+item_5/text = "Editor"
+item_6/text = "Default"
+item_7/text = "UI: Screens"
+script = ExtResource("2_5gg6x")
 
 [node name="MenuButton" type="MenuButton" parent="HBoxContainer" unique_id=397744270]
 unique_name_in_owner = true

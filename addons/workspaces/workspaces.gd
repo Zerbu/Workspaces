@@ -51,6 +51,9 @@ func _enter_tree() -> void:
 	add_child(change_timer)
 	change_timer.timeout.connect(_on_change_timer_timeout)
 	change_timer.start()
+	
+	var workspace = Workspaces.settings.get_active_workspace()
+	if workspace: workspace.apply()
 
 func _exit_tree() -> void:
 	GrapplerBase.root_vbox.remove_child	(workspaces_bar)

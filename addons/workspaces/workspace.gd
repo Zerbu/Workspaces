@@ -69,6 +69,8 @@ extends Resource
 @export var hide_tabs_bottom_right		: 	bool
 
 func apply():
+	if Workspaces.settings.print_debug_info: print("[Workspaces] Applying Workspace: %s" % workspace_name)
+	
 	if layout_name:
 		var layout = GrapplerPopupMenuUtils.get_id_from_text(GrapplerTitleBar.editor_layouts_menu, layout_name)
 		if layout >= 0:
@@ -158,10 +160,13 @@ func apply_filter():
 		)
 
 func reapply():
+	if Workspaces.settings.print_debug_info: print("[Workspaces] Reapplying Workspace: %s", workspace_name)
 	unapply()
 	apply()
 
 func unapply():
+	if Workspaces.settings.print_debug_info: print("[Workspaces] Unapplying Workspace: %s" % workspace_name)
+	
 	Workspace.unhide_controls()
 	
 	if force_save_layout:

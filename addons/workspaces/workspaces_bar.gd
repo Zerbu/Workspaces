@@ -34,8 +34,6 @@ var _is_refreshing: bool
 func _ready() -> void:
 	_refresh()
 	menu_button.get_popup().id_pressed.connect(_on_menu_button_id_pressed)
-	var workspace = Workspaces.settings.get_active_workspace()
-	if workspace: workspace.apply()
 
 func _refresh():
 	workspace_list.clear()

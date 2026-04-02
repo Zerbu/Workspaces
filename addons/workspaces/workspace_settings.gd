@@ -34,6 +34,8 @@ extends Resource
 		active_workspace_index = value
 		active_workspace_changed.emit(active_workspace_index, get_active_workspace(), previous_index, previous_workspace)
 
+@export var print_debug_info: bool
+
 @export var workspaces: Array[Workspace]
 
 signal active_workspace_changed(index: int, workspace: Workspace)
